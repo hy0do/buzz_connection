@@ -1,0 +1,13 @@
+= form_with url: plans_path do |f| 
+  = f.radio_button :plan_id, 0, checked: @current_plan.default?
+  = f.label 0 do
+    p フリー
+    p 0円
+
+  - Plan.published.find_each do |plan|
+    = f.radio_button :plan_id, plan.id, checked: @current_plan.id == plan.id
+    = f.label plan.id do
+      p = plan.name
+      p = plan.price.to_s + '円'
+
+  = f.submit "プランを変更する"

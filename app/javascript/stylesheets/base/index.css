@@ -1,0 +1,10 @@
+@import 'wrapper';
+@import 'main';
+@import 'under_header';
+
+body {
+  display: block;
+  width: 100%;
+  background: #efefef;
+  min-width: 760px;
+}

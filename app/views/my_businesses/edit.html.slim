@@ -1,0 +1,54 @@
+.profile#edit
+  nav.white-box
+    ul
+      li = link_to "HOME", profile_path
+      li = link_to "アカウント設定", edit_profile_path
+      li = link_to "ページ設定", edit_my_business_path, class: 'selected'
+      li = content_tag(:span, "プラン設定")
+      li = content_tag(:span, "決済情報")
+      li = content_tag(:span, "購入履歴")
+
+  section.data
+    h1 ページ設定
+
+    .box.white-box
+      = form_with url: :my_business, model: @my_business do |f|
+        table
+          tbody
+            tr
+              th = f.label :status, '公開設定'
+              td = f.select :status, { '公開' => :published, '非公開' => :secret }
+            tr
+              th = f.label :name, '事業名'
+              td = f.text_field :name, class: 'text'
+            tr
+              th = f.label :title, 'タイトル（キャッチコピー）'
+              td = f.text_field :title, class: 'text'
+            tr
+              th = f.label :image, 'ヘッダー画像'
+              td = f.file_field :image
+            tr
+              th = f.label :prefecture_id, '都道府県'
+              td = f.select :prefecture_id, { '-': nil }.merge(Prefecture.pluck(:name, :id).to_h)
+            tr
+              th = f.label :detail, '詳細'
+              td = f.text_area :detail, class: 'textArea'
+            tr
+              th 紹介して欲しい層
+              td
+                = f.fields_for :business_demand_elements do |ff|
+                  .element
+                    = ff.select :industry_id, { "業界": nil }.merge(Industry.pluck(:name, :id).to_h)
+                    = ff.select :occupation_id, { '業種': nil }.merge(Occupation.pluck(:name, :id).to_h)
+                    = ff.text_field :title, class: 'text', placeholder: '説明'
+                    = ff.hidden_field :id
+            tr
+              th 紹介できる層
+              td
+                = f.fields_for :business_supply_elements do |ff|
+                  .element
+                    = ff.select :industry_id, { "業界": nil }.merge(Industry.pluck(:name, :id).to_h)
+                    = ff.select :occupation_id, { '業種': nil }.merge(Occupation.pluck(:name, :id).to_h)
+                    = ff.text_field :title, class: 'text', placeholder: '説明'
+                    = ff.hidden_field :id
+        = f.submit '更新する', class: 'button'

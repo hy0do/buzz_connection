@@ -1,0 +1,3 @@
+main.white-box
+  = form_with url: connections_path, model: @connection_request do |f|
+    = render "connections/new/#{@connection_request.connection_type}", f: f

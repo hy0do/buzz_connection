@@ -1,0 +1,39 @@
+.figures
+  fiture#from-user
+    = image_pack_tag 'media/images/blank_avatar.png'
+    figcaption
+      = f.select :from_user_id, { '選択してください': nil }.merge(@connection_request.candidate_list.pluck(:name, :id).to_h), class: 'name'
+
+  .arrow-wrap.with-figure
+    figure#connector
+      - user = @connection_request.connector
+      - if user.avatar_image.present?
+        = image_tag user.avatar_image.to_s
+      - else
+        = image_pack_tag 'media/images/blank_avatar.png'
+      figcaption
+        span.name = user.name
+    .arrow
+
+  fiture#to-user
+    -  user = @connection_request.to_user
+    - if user.avatar_image.present?
+      = image_tag user.avatar_image.to_s
+    - else
+      = image_pack_tag 'media/images/blank_avatar.png'
+    figcaption
+      span.name = user.name
+
+.text
+  p.question
+    | 紹介しますか？？
+
+.buttons
+  = f.hidden_field :connection_type
+  = f.hidden_field :connector_id
+  = f.hidden_field :to_user_id
+  = hidden_field_tag :code, @connection_request.to_user.code
+  = hidden_field_tag :session_id, @connection_request.session_id
+
+  = link_to 'キャンセル', user_path(@connection_request.to_user), class: 'button middle gray'
+  = f.submit '紹介する', class: 'button middle'

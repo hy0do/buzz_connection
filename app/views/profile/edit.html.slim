@@ -1,0 +1,43 @@
+nav.white-box
+  ul
+    li = link_to "HOME", profile_path
+    li = link_to "アカウント設定", edit_profile_path, class: 'selected'
+    li = link_to "ページ設定", edit_my_business_path
+    li = content_tag(:span, "プラン設定")
+    li = content_tag(:span, "決済情報")
+    li = content_tag(:span, "購入履歴")
+
+section.data
+  h1 = @signup ? '基本情報を登録' : 'アカウント設定'
+
+  .box.white-box
+    = form_with url: "/profile", model: @current_user do |f|
+      table
+        tbody
+          tr
+            th = f.label :name, '表示名'
+            td = f.text_field :name, class: 'text'
+          tr
+            th = f.label :cover_image, 'カバー画像'
+            td = f.file_field :cover_image
+          tr
+            th = f.label :avatar_image, 'プロフィール画像'
+            td = f.file_field :avatar_image
+          tr
+            th = f.label :birthday, '生年月日'
+            td = f.date_select :birthday, start_year: Date.today.year - 100, end_year: Date.today.year
+          tr
+            th = f.label :gender, '性別'
+            td
+              - User.genders.each do |name, value|
+               = f.radio_button :gender, name, checked: @current_user.gender == name
+               = f.label [:gender, value].join('_'), name
+          tr
+            th = f.label :email, 'メールアドレス'
+            td = f.text_field :email, disabled: true
+          tr
+            th = f.label :detail, '自己紹介'
+            td = f.text_area :detail, class: 'textArea'
+
+      - button_text = @signup ? '登録する' : '更新する'
+      = f.submit button_text, class: 'button'

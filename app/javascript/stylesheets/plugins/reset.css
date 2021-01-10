@@ -1,0 +1,5 @@
+@import '~modern-css-reset';
+
+textarea {
+  resize: none;
+}

@@ -1,0 +1,12 @@
+header.header
+  .wrapper
+    h1.header_logo = link_to 'バズコネ | BuzzConnection', root_path
+    nav.header_nav
+      ul
+        li = link_to 'お知らせ', notifications_path
+        - if user_login?
+          li = link_to 'メッセージ', message_rooms_path
+          li = link_to 'アカウント', profile_path
+          li = button_to 'ログアウト', logout_path, method: :delete
+        - else
+          li = link_to 'ログイン', login_path

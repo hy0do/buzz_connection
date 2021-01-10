@@ -1,0 +1,66 @@
+header.user-header
+  .white-box
+    - if @user.cover_image.present?
+      = image_tag @user.cover_image.to_s, class: 'cover'
+    - else
+      .cover.blank
+    - if @user.avatar_image.present?
+      = image_tag @user.avatar_image.to_s, class: 'avatar'
+    - else
+      .avatar.blank
+    h2.heading =  @user.name
+    ul.buttons
+      li = link_to '基本データ', user_path(@user), class: 'btn'
+      li = content_tag(:span, 'ランキング', class: 'btn disabled')
+      li = content_tag(:span, 'リファラル数', class: 'btn disabled')
+      li = content_tag(:span, 'つながり数', class: 'btn disabled')
+      - if @user == current_user
+        - if user_login?
+          li = link_to '編集する', edit_profile_path, class: 'btn'
+      - else
+        li = link_to 'つながる', new_connection_path(user_code: @user.code, type: :direct), class: 'btn'
+        li = link_to '紹介する', new_connection_path(user_code: @user.code, type: :introduce), class: 'btn'
+
+section#basic-data
+  h3 基本データ
+  .box.white-box
+    ul
+      li 
+        label 名前
+        span = @user.name
+      - if @user.birthday
+        li
+          label 年齢
+          = "#{@user.age}歳"
+      - unless @user.unknown?
+        li
+          label 性別
+          = @user.gender
+
+- if @user.detail.present?
+  section
+    h3 自己紹介
+    .box.white-box
+      p.text = safe_join(@user.detail.split("\n"),tag(:br))
+
+- if @user.business.published?
+  section#business
+    h3 事業
+    .box.white-box
+      = link_to business_path(@user.business) do
+        h4 = @user.business.title
+        p = @user.business.detail
+
+- if @user.friends.any?
+  section#user-link-list
+    h3 つながり
+    .box.white-box
+      ul
+        - @user.friends.each do |user|
+          li
+            = link_to user_path(user), class: 'user-link' do
+              - if user.avatar_image.present?
+                = image_tag user.avatar_image.to_s, class: 'user-image'
+              - else
+                span.user-image.blank
+              = user.name

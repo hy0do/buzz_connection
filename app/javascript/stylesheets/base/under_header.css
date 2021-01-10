@@ -1,0 +1,5 @@
+body > .under_header {
+  display: block;
+  width: 100%;
+  margin: 0 auto;
+}

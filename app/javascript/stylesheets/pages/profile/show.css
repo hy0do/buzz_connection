@@ -1,0 +1,22 @@
+.profile#show {
+  & .data {
+    & img.cover {
+      width: 300px;
+      height: 225px
+    }
+   
+    & img.avatar {
+      border: solid 2px #dddddd;
+      border-radius: 50%;
+      width: 120px;
+      height: 120px;
+      background: #ffffff;
+    }
+
+    & p.text {
+      padding: 15px;
+      border: solid 1px #cccccc;
+      border-radius: 10px;
+    }
+  }
+}

@@ -1,0 +1,143 @@
+.top {
+  width: 100%;
+
+  & .wrapper {
+    display: block;
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  & .key {
+    width: 100%;
+    height: 466px;
+    padding: 70px 0 100px;
+    width: 100%;
+    background: url('../../../images/key.jpg') no-repeat;
+    background-size: cover;
+
+    & h2 {
+      color: #ffffff;
+      font-size: 3rem;
+      text-align: center;
+      letter-spacing: 0.8rem;
+    }
+
+    & form {
+      display: block;
+      width: 100%;
+      margin: 40px auto 0;
+      display: flex;
+    }
+
+    & .form-half {
+      width: 50%;
+      display: flex;
+    }
+
+    & .select {
+      padding: 5 10px;
+      width: 50%;
+      cursor: pointer;
+    }
+    & .textField {
+      padding: 5 10px;
+      width: 70%;
+      cursor: pointer;
+    }
+    & .btn {
+      width: 30%;
+      background: #eeeeee; 
+      color: #000000;
+      border: solid 1px #000000;
+      cursor: pointer;
+    }
+  }
+
+  & .userList {
+    width: 100%;
+    margin: 40px auto 70px;
+
+    & h2 {
+      font-size: 2rem;
+      font-weight: 300; 
+    }
+
+    & .button-wrap {
+      width: 80%;
+      margin: 30px auto 0;
+    }
+
+    & .white-box {
+      padding: 30px 0 50px;
+      margin-top: 10px;
+    }
+
+    & ol {
+      padding: 0 40px;
+      display: flex;
+      flex-wrap: wrap;
+      width: 100%;
+      list-style: none;
+      margin: 0;
+
+      & li {
+        width: 50%;
+        height: 129px;
+        margin: 30px 0;
+      }
+      & li a {
+        display: block;
+        width: 100%;
+        color: #000000;
+        text-decoration: none;
+        padding: 10px 20px;
+      }
+      & li:hover {
+        opacity: 0.7;
+      }
+    }
+
+    & figure {
+      float: left;
+
+      & img {
+        border-radius: 50%;
+        border: solid 2px #eeeeee;
+        width: 100px;
+        height: 100px;
+        background: #ffffff;
+      }
+
+      & figcaption {
+        margin-top: 5px;
+        text-align: center;
+      }
+    }
+
+    & .detail {
+      display: block;
+      float: left;
+      margin-left: 20px;
+      max-width: 60%;
+      overflow: hidden;
+
+      & h3 {
+        display: block;
+        font-size: 1.25rem;
+        font-weight: 300;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        overflow: hidden;
+      }
+
+      & p {
+        margin-top: 5px;
+        font-size: 1rem;
+        font-weight: 100;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 3;
+      }
+    }
+  }
+}

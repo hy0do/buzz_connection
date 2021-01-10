@@ -1,0 +1,84 @@
+.header {
+  display: block;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0 2px 3px 0 rgba(0, 0, 0, .5);
+
+  & .wrapper {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+  }
+}
+
+.header_logo {
+  width: 155px;
+  height: 44px;
+  background: url('../../images/logo_rectangle_black.png') no-repeat;
+  background-size: cover;
+  overflow: hidden;
+  text-indent: 100%;
+  white-space: nowrap;
+
+  & a {
+    display: block;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.header_logo:after {
+  text-indent: 0;
+  text-align: left;
+  position: absolute;
+  top: 18px;
+  left: 170px;
+  font-size: 0.8rem;
+  content: 'ベータ版';
+  color: #ffffff;
+  padding: 5px 15px;
+  border-radius: 5px;
+  background: #e29816;
+  display: block;
+}
+
+
+.header_nav {
+  &  ul {
+    display: flex;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  & li {
+    padding: 10px 20px;
+    color: #000000;
+  }
+
+  & li a {
+    text-decoration: none;
+    color: #000000;
+  }
+
+  & li a:hover {
+    color: #27a7dd;
+    text-decoration: underline;
+  }
+
+  & li input:hover {
+    color: #27a7dd;
+    text-decoration: underline;
+  }
+
+  & li input {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    outline: none;
+    padding: 0;
+    appearance: none;
+  }
+}

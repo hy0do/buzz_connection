@@ -1,0 +1,63 @@
+header.white-box
+  .heading
+    h2 = @business.title
+    small
+      - if @business.name
+        = @business.name
+        - if @business.prefecture
+          = "（#{@business.prefecture_name}）"
+      - else
+        - if @business.prefecture
+          = @business.prefecture_name
+
+  - if @business.image.present?
+    = image_tag @business.image.to_s, class: 'main-image'
+
+  .infos
+    = link_to user_path(@business.user), class: 'user-link' do
+      - if @business.user.avatar_image.present?
+        = image_tag @business.user.avatar_image.to_s, class: 'user-image'
+      - else
+        span.user-image.blank
+      = @business.user.name
+
+
+    .buttons
+      - if user_login?
+        - if @business.id == @current_user&.business&.id
+          = link_to '編集する', edit_my_business_path, class: 'btn'
+        - else
+          - if current_user.has_connection?(@business.user)
+            span.btn.disabled = 'つながる'
+          - else
+            = link_to 'つながる', new_connection_path(user_code: @business.user.code, type: :direct), class: 'btn'
+          = link_to '紹介する', new_connection_path(user_code: @business.user.code, type: :introduce), class: 'btn'
+          / = button_tag 'シェアする', class: 'btn'
+      - else
+        = link_to 'つながる', login_path, class: 'btn'
+        = link_to '紹介する', login_path, class: 'btn'
+        
+
+section.white-box
+  h3 事業詳細
+  p = @business.detail
+
+- if @business.business_demand_elements.any?
+  section.white-box
+    h3 こんな人紹介してくれませんか？
+    ul
+      - @business.business_demand_elements.each do |element|
+        li
+          h4 = element.title
+          small.label = element.industry_name
+          small.label = element.occupation_name
+
+- if @business.business_supply_elements.any?
+  section.white-box
+    h3 私たちはこんな人を紹介できます！
+    ul
+      - @business.business_supply_elements.each do |element|
+       li
+         h4 = element.title
+         small.label = element.industry_name
+         small.label = element.occupation_name

@@ -1,0 +1,23 @@
+.flash {
+  display: block;
+  width: 100&;
+
+  & > div {
+    margin: 20px auto;
+    padding: 10px 30px;
+    width: 100%;
+    color: #14525F;
+    font-weight: 300;
+    text-align: center;
+    background: #D3ECF2;
+  }
+
+  & .alert {
+    color: #7B3239;
+    background: #F7D7DA;
+  }
+  & .error {
+    color: #7B3239;
+    background: #F7D7DA;
+  }
+}

@@ -1,0 +1,36 @@
+.figures
+  fiture#from-user
+    - user = @connection_request.from_user
+    - if user.avatar_image.present?
+      = image_tag user.avatar_image.to_s
+    - else
+      = image_pack_tag 'media/images/blank_avatar.png'
+    figcaption
+      span.name = user.name
+
+  .arrow-wrap
+    .arrow
+
+  fiture#to-user
+    -  user = @connection_request.to_user
+    - if user.avatar_image.present?
+      = image_tag user.avatar_image.to_s
+    - else
+      = image_pack_tag 'media/images/blank_avatar.png'
+    figcaption
+      span.name = user.name
+
+.text
+  p.question
+    = @connection_request.to_user.name
+    | さんにつながりを申請しますか？
+
+.buttons
+  = f.hidden_field :connection_type
+  = f.hidden_field :from_user_id
+  = f.hidden_field :to_user_id
+  = hidden_field_tag :code, @connection_request.to_user.code
+  = hidden_field_tag :session_id, @connection_request.session_id
+
+  = link_to 'キャンセル', user_path(@connection_request.to_user), class: 'button middle gray'
+  = f.submit '申請する', class: 'button middle'

@@ -1,0 +1,36 @@
+= content_for :under_header do 
+  section.top
+    .key
+      .wrapper
+        h2
+          | あなたの１リファラルが
+          br
+          | 友人の助けに
+        = form_tag businesses_path, method: 'get' do
+          .form-half
+           = select_tag :industry_id, options_for_select({ '業界': nil }.merge(Industry.pluck(:name, :id).to_h), selected: params[:industry_id]), class: 'select'
+           = select_tag :occupation_id, options_for_select({ '業種': nil }.merge(Occupation.pluck(:name, :id).to_h), selected: params[:occupation_id]), class: 'select'
+          .form-half
+            = text_field_tag :search_text, params[:search_text], placeholder: 'キーワード', class: 'textField'
+            = submit_tag '検索する', class: 'btn'
+
+section.userList
+  h2 個人事業主一覧
+  .white-box
+    ol
+      - @users.each do |user|
+        li
+          = link_to business_path(user.business), class: 'clearfix' do
+            figure
+              - if user.avatar_image.present?
+                = image_tag user.avatar_image.to_s
+              - else
+                = image_pack_tag 'media/images/blank_avatar.png'
+              figcaption = user.name
+            .detail
+              h3 = user.business.title || 'すごいビジネス'
+              p = user.business.detail || 'エモい文章 ' * (10 * (rand(2) + 1))
+
+    .button-wrap
+      = link_to 'もっと見る', businesses_path, class: 'button'
+

@@ -1,0 +1,29 @@
+doctype html
+html
+  head
+    title BuzzConnection
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    = csrf_meta_tags
+    = csp_meta_tag
+
+    = include_gon(namespace: 'railsData')
+    = javascript_pack_tag 'application'
+  body
+    - if content_for? :header
+       = yield :header
+    - else
+      = render 'shared/header'
+
+    .flash
+      - flash.each do |key, value|
+        = content_tag(:div, value, class: key)
+
+    - if content_for? :under_header
+      .under_header = yield :under_header
+
+    .wrapper class="#{controller.controller_name}" id="#{controller.action_name}" 
+      
+      = yield
+      
+    = render 'shared/footer'
+      

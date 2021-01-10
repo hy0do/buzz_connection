@@ -1,0 +1,113 @@
+.message_rooms {
+  padding: 30px 0;
+
+  & h1 {
+    padding: 10px 30px;
+    background: #27a7dd;
+    color: #ffffff;
+  }
+}
+
+.messageRoom {
+  display: block;
+  widht: 100%;
+
+  & .box {
+    background: #ffffff;
+    margin: 0 auto;
+    height: 60vh;
+    overflow: scroll;
+  }
+
+  & .box_row {
+    padding: 40px 20px;
+  }
+
+  & .message {
+    & .img {
+      border: solid 2px #eeeeee;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+      background: #ffffff;
+    }
+    & .blank-avatar {
+      content: url('../../../images/blank_avatar.png');
+    }
+    & .data {
+      max-width: 70%;
+    }
+    & small {
+      display: block;
+      width: 100%;
+      color: #bbbbbb;
+    }
+    & .text {
+      border-radius: 5px;
+      padding: 10px 30px;
+      margin: 5px 0;
+      background: #eeeeee;
+      overflow: hidden;
+      white-space: pre-wrap;
+      box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .5);
+    }
+  }
+
+  & .box_row:after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  & .message::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+
+  & .right {
+    float: right;
+    & .text {
+      background: #9bddf7;
+    }
+    & .avatar {
+      float: right;
+    }
+    & .data {
+      float: right;
+      margin-right: 15px;
+    }
+    & small {
+      text-align: right;
+    }
+  }
+
+  & .left {
+    float: left;
+    & .avatar {
+      float: left;
+    }
+    & .data {
+      float: left;
+      margin-left: 15px;
+    }
+  }
+
+  & .form {
+    display: flex;
+    width: 100%;
+    margin-top: 10px;
+
+    & textarea {
+      width: 80%;;
+      max-width: 80%;;
+      height: 3rem;
+      max-height: 3rem;
+      padding: 10px 15px;
+    }
+
+    & button {
+      width: 20%;
+    }
+  }
+}

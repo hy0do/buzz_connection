@@ -1,0 +1,18 @@
+- content_for :header do
+  header.header
+    .wrapper
+      h1.header_logo = link_to 'バズコネ | BuzzConnection', root_path
+
+main.white-box
+  h2
+    span.logo
+    | にログイン
+  ul
+    li = link_to 'Facebookでログイン', '/auth/facebook', id: 'facebook'
+    li = link_to 'Linkedinでログイン', '/auth/linkedin', id: 'linkedin'
+
+
+- if Rails.env.development? && params[:test]
+  = form_with url: auth_test_path do |f|
+    = f.text_field :code, value: params[:code]
+    = f.submit 'test login'

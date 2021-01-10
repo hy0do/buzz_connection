@@ -1,0 +1,18 @@
+.static_pages {
+  padding: 40px 0 70px;
+
+  & .white-box {
+    margin-top: 20px;
+    padding: 30px 40px;
+  }
+
+  & .box {
+    display: box;
+    margin: 20px 0;
+  }
+
+  & .first {
+    display: block;
+    padding: 0 10px;
+  }
+}

@@ -1,0 +1,38 @@
+.figures
+  fiture#from-user
+    - user = @connection_request.from_user
+    - if user.avatar_image.present?
+      = image_tag user.avatar_image.to_s
+    - else
+      = image_pack_tag 'media/images/blank_avatar.png'
+    figcaption
+      = link_to user.name, user_path(user), class: 'name'
+
+  .arrow-wrap.with-figure
+    figure#connector
+      - user = @connection_request.connector
+      - if user.avatar_image.present?
+        = image_tag user.avatar_image.to_s
+      - else
+        = image_pack_tag 'media/images/blank_avatar.png'
+      figcaption
+        = link_to user.name, user_path(user), class: 'name'
+    .arrow
+
+  fiture#to-user
+    -  user = @connection_request.to_user
+    - if user.avatar_image.present?
+      = image_tag user.avatar_image.to_s
+    - else
+      = image_pack_tag 'media/images/blank_avatar.png'
+    figcaption
+      span.name = user.name
+
+.text
+  p.disc
+    = @connection_request.connector_name
+    | さんから
+    = @connection_request.from_user_name
+    | さんを紹介されました。
+
+  p.question 承認しますか？

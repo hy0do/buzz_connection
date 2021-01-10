@@ -1,0 +1,92 @@
+.connections {
+  & .figures {
+    display: flex;
+    justify-content: center;
+    flex-wrap: nowrap;
+
+    & img {
+      border: solid 2px #dddddd;
+      border-radius: 50%;
+      width:  200px;
+      height:  200px;
+    }
+
+    & figcaption .name {
+      width: 100%;
+      display: block;
+      margin-top: 10px;
+      font-size: 1.5rem;
+      text-align: center;
+      text-decoration: none;
+      color: #333333;
+    }
+    & figcaption select {
+      display: block;
+      margin: 10px auto 0;
+      font-size: 1.2rem;
+      text-align: center;
+      text-decoration: none;
+      color: #333333;
+      padding: 5px 10px;
+    }
+    & figcaption a:hover {
+      text-decoration: underline;
+      opacity: 0.8;
+    }
+
+    & figure#connector {
+      display: block;
+      position: relative;
+      bottom: 30px;
+
+      & img {
+        width:  100px;
+        height:  100px;
+        margin: 0;
+      }
+
+      & figcaption .name {
+        font-size: 1rem;
+      }
+    }
+  }
+  & .arrow-wrap {
+    display: flex;
+    align-items: center;
+    margin: 0 70px;
+  }
+
+  & .arrow-wrap.with-figure {
+    flex-direction: column;
+  }
+  & .arrow {
+    width: 30px;
+    height: 30px;
+    border: 5px solid;
+    border-color: #565656 #565656 transparent transparent;
+    transform: rotate(45deg);
+  }
+
+  & p {
+    text-align: center;
+  }
+
+  & .text {
+    margin-top: 30px;
+  }
+
+  & .question {
+    margin: 20px auto 30px;
+  }
+
+  & .buttons {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    margin-right: -10px;
+
+    & .button {
+      margin-right: 10px;
+    }
+  }
+}

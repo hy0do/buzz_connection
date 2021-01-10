@@ -1,0 +1,6 @@
+main.white-box
+  = render "connections/edit/#{@connection_request.connection_type}/#{@user_type}"
+
+  .buttons
+    = button_to '拒否', reject_connection_path(@connection_request), method: :put, class: 'button gray middle'
+    = button_to '承認', approve_connection_path(@connection_request), method: :put, class: 'button middle'

@@ -1,0 +1,35 @@
+h1 案件一覧
+
+.form.white-box
+  = form_tag businesses_path, method: 'get' do
+    .form-half
+     = select_tag :industry_id, options_for_select({ '業界': nil }.merge(Industry.pluck(:name, :id).to_h), selected: params[:industry_id], class: 'select')
+     = select_tag :occupation_id, options_for_select({ '業種': nil }.merge(Occupation.pluck(:name, :id).to_h), selected: params[:occupation_id], class: 'select')
+    .form-half
+      = text_field_tag :search_text, params[:search_text], placeholder: 'キーワード', class: 'textField'
+      = submit_tag '検索する', class: 'button'
+
+main.white-box
+  - if @businesses.any?
+    ul
+      - @businesses.each do |business|
+        li
+          = link_to business_path(business) do
+            .left
+              .img-wrap
+                - if business.image.present?
+                  = image_tag business.image.thumbnail.to_s, class: 'img'
+                - else
+                  span.img.blank
+                / span.user-link
+                  / - if business.user.avatar_image.present?
+                    / = image_tag business.user.avatar_image.to_s, class: 'user-image'
+                  / - else
+                    / = content_tag(:span, '', class: 'user-image blank')
+                  / = business.user.name
+            .right
+              h3 = business.title
+              p = business.detail
+          
+  - else
+    h3 指定した条件の案件は存在しません

@@ -1,0 +1,88 @@
+body > .auth {
+  min-height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+
+  & main {
+    padding: 60px 60px 120px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+
+  & h2 {
+    display: flex;
+    align-items: center;
+    margin: 0 auto 50px;
+  }
+
+  & .logo {
+    display: inline-block;
+    content: '';
+    background: url('../../../images/logo_rectangle_black.png');
+    background-size: cover;
+    width: 155px;
+    height: 44px;
+    margin-right: 10px;
+  }
+
+
+  & ul {
+    padding: 0;
+    margin: 0 auto -20px;
+    list-style: none;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+  }
+
+  & li {
+    margin-right: 10px;
+  }
+
+  & a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    font-size: 1rem;
+    font-weight: 900;
+    color: #ffffff;
+    padding: 10px 20px 10px 10px;
+    width: 100%;
+    border-radius: 10px;
+  }
+
+  & a:hover {
+    opacity: 0.8;
+  }
+
+  & #facebook {
+    background: #3B5998;
+  }
+
+  & #linkedin {
+    background: #0E7FB5;
+  }
+
+  & #facebook:before {
+    display: inline-block;
+    background: url('../../../images/facebook.png');
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    content:"";
+    margin-right: 10px;
+  }
+
+  & #linkedin:before {
+    display: inline-block;
+    background: url('../../../images/linkedin.png');
+    background-size: 50px 50px;
+    width: 50px;
+    height: 50px;
+    content:"";
+    margin-right: 10px;
+  }
+}

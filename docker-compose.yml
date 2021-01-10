@@ -1,0 +1,74 @@
+version: '3'
+
+x-images:
+  rails: &image-rails
+    image: asia.gcr.io/buzz-connection/rails-base:latest
+
+services:
+  rails:
+    <<: *image-rails
+    working_dir: /app
+    environment:
+      WEBPACKER_DEV_SERVER_HOST: webpack-dev-server
+      MYSQL_HOST: db
+    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s"
+    volumes:
+      - .:/app:cached
+      - bundle-data:/usr/local/bundle:cached 
+    ports:
+      - "3000:3000"
+      - "8443:8443"
+    depends_on:
+      - db
+      - redis
+    tty: true
+    stdin_open: true
+
+  webpack-dev-server:
+    <<: *image-rails
+    working_dir: /app
+    command: bin/webpack-dev-server
+    volumes:
+      - .:/app:cached
+      - bundle-data:/usr/local/bundle:cached 
+    depends_on:
+      - rails
+    ports:
+      - 3035:3035
+    tty: false
+    stdin_open: false
+
+  db:
+    image: mysql:8.0.23
+    environment:
+      MYSQL_ROOT_PASSWORD: password
+    ports:
+      - '3306:3306'
+    command: --default-authentication-plugin=mysql_native_password
+    volumes:
+      - mysql-data:/var/lib/mysql:cached
+
+  redis:
+    image: "redis:6.0.10"
+    ports:
+      - "6379:6379"
+    volumes:
+      - "redis-data:/data"
+
+
+volumes:
+  mysql-data:
+    driver_opts:
+      type: none
+      device: ./data/mysql
+      o: bind
+  redis-data:
+    driver_opts:
+      type: none
+      device: ./data/redis
+      o: bind
+  bundle-data:
+    driver_opts:
+      type: none
+      device: ./data/bundle
+      o: bind

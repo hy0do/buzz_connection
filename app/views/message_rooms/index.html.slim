@@ -1,0 +1,8 @@
+- if @rooms.any?
+  ul
+    - @rooms.each do |room|
+      - name = room.users.pluck(:name).join('、') + 'との会話'
+      li = link_to name, message_room_path(room)
+- else
+  p まだつながりがありません。
+  = link_to 'つながりを探す', businesses_path

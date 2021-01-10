@@ -1,0 +1,43 @@
+.button {
+  background: #27a7dd;
+  border: none;
+  display: block;
+  color: #ffffff;
+  padding: 10px 30px;
+  border-radius: 5px;
+  text-decoration: none;
+  text-align: center;
+  corsor: pointer;
+}
+
+.button.gray {
+  background: #bbbbbb;
+}
+
+.button.middle {
+  padding: 10px 50px;
+}
+
+.btn {
+  padding: 10px 20px;
+  box-sizing: content-box;
+  color: #27a7dd;
+  text-decoration: none;
+  border: solid 2px #27a7dd;
+  border-radius: 5px;
+  background: none;
+}
+
+a.btn {
+  cursor : pointer;
+}
+
+a.btn:hover {
+  opacity: 0.8;
+}
+
+.btn.disabled {
+  border: none;
+  color: #ffffff;
+  background: #cccccc;
+}
