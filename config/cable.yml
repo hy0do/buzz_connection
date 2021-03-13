@@ -10,3 +10,4 @@ production:
   adapter: redis
   url: <%= ENV["CABLE_URL"] %>
   channel_prefix: buzz_connection_production
+  id: null
