@@ -21,5 +21,5 @@ timeout: 3600s
 substitutions:
   _GCR_REGION: asia.gcr.io
   _GCR_PROJECT: buzz-connection
-  _GCR_IMAGE_NAME: rails
+  _GCR_IMAGE_NAME: user-app
   _GCR_TAG: latest
