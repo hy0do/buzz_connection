@@ -8,13 +8,11 @@ steps:
          '_DOTENV=${_DOTENV}',
          '-t',
          '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
-         '--cache-from',
-         '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}',
          '.']
 
 # push image
 - name: 'gcr.io/cloud-builders/docker'
-  args: ["push", '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}']
+  args: ["push", '${_GCR_REGION}/${_GCR_PROJECT}/${_GCR_IMAGE_NAME}:${_GCR_TAG}']
 
 timeout: 3600s
 
@@ -22,4 +20,4 @@ substitutions:
   _GCR_REGION: asia.gcr.io
   _GCR_PROJECT: buzz-connection
   _GCR_IMAGE_NAME: user-app
-  _GCR_TAG: latest
+  _GCR_TAG: $REVISION_ID
