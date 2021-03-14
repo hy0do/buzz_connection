@@ -1,4 +1,4 @@
-FROM asia.gcr.io/buzz-connection/rails-base:580f7a9416291203d02f84ff350feee1c10cd7fe
+FROM asia.gcr.io/buzz-connection/rails-base:stable
 
 WORKDIR /app
 COPY . /app
