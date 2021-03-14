@@ -2,7 +2,7 @@ version: '3'
 
 x-images:
   rails: &image-rails
-    image: asia.gcr.io/buzz-connection/rails-base:latest
+    image: asia.gcr.io/buzz-connection/rails-base:580f7a9416291203d02f84ff350feee1c10cd7fe
 
 services:
   rails:
