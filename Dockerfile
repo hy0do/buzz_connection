@@ -3,6 +3,8 @@ FROM asia.gcr.io/buzz-connection/rails-base:stable
 WORKDIR /app
 COPY . /app
 
+ARG _RAILS_MASTER_KEY
+ENV RAILS_MASTER_KEY ${_RAILS_MASTER_KEY}
 ENV RAILS_SERVE_STATIC_FILES 1
 
 RUN bundle install
