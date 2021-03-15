@@ -2,10 +2,6 @@ steps:
 # build image
 - name: 'gcr.io/cloud-builders/docker'
   args: ['build',
-         '--build-arg',
-         '_RAILS_MASTER_KEY=${_RAILS_MASTER_KEY}',
-         '--build-arg',
-         '_DOTENV=${_DOTENV}',
          '-t',
          '${_IMAGE_NAME}:${_IMAGE_TAG}',
          '.']
