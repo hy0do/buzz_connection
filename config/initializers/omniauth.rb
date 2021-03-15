@@ -1,4 +1,8 @@
 Rails.application.config.middleware.use OmniAuth::Builder do
+  configure do |config|
+    config.full_host = ENV['HOST_URL']
+  end
+
   provider :facebook,
            Rails.application.credentials.facebook[:app_id],
            Rails.application.credentials.facebook[:app_secret],
