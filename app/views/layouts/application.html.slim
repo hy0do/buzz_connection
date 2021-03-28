@@ -8,6 +8,7 @@ html
 
     = include_gon(namespace: 'railsData')
     = javascript_pack_tag 'application'
+    = stylesheet_pack_tag 'application'
   body
     - if content_for? :header
        = yield :header
